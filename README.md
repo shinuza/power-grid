@@ -1,2 +1,2 @@
-gridly
+Power grid
 ======

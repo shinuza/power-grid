@@ -1,8 +1,8 @@
 ;(function(window, $) {
 
-  $.fn.gridly = function gridly(options, selector) {
+  $.fn.powerGrid = function powerGrid(options, selector) {
     options = options || {};
-    selector = selector || ' > div';
+    selector = options.selector || ' > div';
 
     var els = $(this).find(selector).css('position', 'absolute')
       , cols = options.cols || 5
@@ -47,11 +47,11 @@
     }
 
     return {
-
       els: els,
-
+      getElements: function getElements() {
+        return els;
+      },
       draw: draw
-
     }
   };
 

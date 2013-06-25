@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Gridly.js</title>
+    <title>Power grid.js</title>
     <link rel="stylesheet" href="styles.css"/>
   </head>
   <body>
@@ -13,7 +13,6 @@
     <input id="by_year" name="sort" type="radio" class="sorter" data-criterion="date">
     <label for="by_year">Sort by Release year</label>
   </p>
-
 
   <div id="container">
     <div class="box" data-artist="chemical brothers" data-album="we are the night" data-date="2007">
@@ -43,14 +42,14 @@
   </div>
 
   <script src="../jquery-1.10.1.js"></script>
-  <script src="../../gridly.js"></script>
+  <script src="../../power-grid.js"></script>
   <script>
-    var gridly = $('#container').gridly({ cols: 5, gutter: 10 });
-    gridly.draw();
+    var grid = $('#container').powerGrid({ cols: 5, gutter: 10, selector: '.box' });
+    grid.draw();
 
     $('.sorter').click(function() {
       var criterion = $(this).data('criterion');
-      Array.prototype.sort.call(gridly.els, function(a, b) {
+      Array.prototype.sort.call(grid.getElements(), function sort(a, b) {
         var aCrit = $(a).data(criterion);
         var bCrit = $(b).data(criterion);
 
@@ -59,7 +58,7 @@
         if(aCrit < bCrit) return -1;
       });
 
-      gridly.draw();
+      grid.draw();
     });
   </script>
   </body>
