@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>
-  <button id="check">Check it up</button>
+  <button id="shake">Shake it up</button>
 </p>
 
 <div id="container">
@@ -26,7 +26,7 @@
   var grid = $('#container').powerGrid({gutter:5, cols: side});
   grid.draw();
 
-  $('#check').click(function() {
+  $('#shake').click(function() {
     grid.shuffle();
     grid.draw();
   });
