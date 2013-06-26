@@ -1,13 +1,15 @@
-Power grid
-==========
+PowerGrid.js
+============
 
-Power grid disposes elements on a virtual grid and provides function so manage them
+PoweGrid.js disposes elements on a virtual grid and provides function so manage them
 
-##API
+## Usage
 
 ```js
-var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: false });
+var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: true });
 ```
+
+## API
 
 ### PowerGrid(options)
 
@@ -15,10 +17,10 @@ var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: f
 
   Valid options:
 
-   - `selector` (String) Which elements to place on the grid - relative to the target element (defaults to `'> div'`)
+   - `selector` (String) Selects elements to place on the grid - relative to the target element (defaults to `'> div'`)
    - `cols` (Number) Number of columns on which to dispose the elements (defaults to `5`)
    - `gutter` (Number) Space between each elements of the grid (defaults to `10`)
-   - `auto` (Boolean) Defines if you need to call `PowerGrid#draw()` manually (default to true)
+   - `auto` (Boolean) Defines if you need to call `PowerGrid#draw()` manually (default to `true`)
 
 ### PowerGrid#draw()
 
