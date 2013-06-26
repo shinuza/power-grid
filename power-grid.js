@@ -24,6 +24,21 @@
     }
 
     PowerGrid.prototype = {
+
+      'grid': function grid() {
+        var c = 0;
+        for(var i = 0; i < this.rows; i++ ) {
+          for(var j = 0; j < this.cols; j ++) {
+            var el = this.elements[c];
+            if(!el) break;
+            $(el)
+              .data('row', j)
+              .data('col', i);
+            c++;
+          }
+        }
+      },
+
       'position': function position() {
         var that = this
           , gutter = options.gutter;
@@ -39,20 +54,6 @@
               'left': that.sampleWidth * row + row * gutter
             })
           });
-      },
-
-      'grid': function grid() {
-        var c = 0;
-        for(var i = 0; i < this.rows; i++ ) {
-          for(var j = 0; j < this.cols; j ++) {
-            var el = this.elements[c];
-            if(!el) break;
-            $(el)
-              .data('row', j)
-              .data('col', i);
-            c++;
-          }
-        }
       },
 
       'draw': function draw() {
