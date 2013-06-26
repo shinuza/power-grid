@@ -1,13 +1,12 @@
 Power grid
 ==========
 
-Power grid disposes elements on a virtual grid
-
+Power grid disposes elements on a virtual grid and provides function so manage them
 
 ##API
 
 ```js
-    var grid = $('#grid').powerGrid{cols: 10, gutter: 20 });
+var grid = $('#grid').powerGrid{cols: 10, gutter: 20 });
 ```
 
 ### PowerGrid(options)
@@ -25,8 +24,8 @@ Power grid disposes elements on a virtual grid
   Renders the grid, you must call this manually to have the grid rendered.
 
 ```js
-    var grid = $('#grid').powerGrid{cols: 10, gutter: 20 });
-    grid.draw();
+var grid = $('#grid').powerGrid{cols: 10, gutter: 20 });
+grid.draw();
 ```
 
 ### PowerGrid#shuffle()
@@ -38,6 +37,7 @@ Power grid disposes elements on a virtual grid
   Sort the elements on the grid, uses `compareFunction(a, b)` to determine the sorting order.
   `compareFunction(a, b)` accepts two parameters which are the two elements your are comparing.
 
+  Uses [native sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
   See the examples for more informations.
 
   You must call `PowerGrid#draw()` to re-draw.
