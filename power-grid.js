@@ -1,13 +1,17 @@
 ;(function(window, $) {
 
-  $.fn.powerGrid = function powerGrid(options, selector) {
+  var COLS = 5;
+  var GUTTER = 20;
+  var SELECTOR = '> div';
+
+  $.fn.powerGrid = function powerGrid(options) {
     options = options || {};
-    selector = options.selector || ' > div';
-    if(options.gutter === undefined) options.gutter = 20;
+    var selector = options.selector || SELECTOR;
+    if(options.gutter === undefined) options.gutter = GUTTER;
 
     function PowerGrid(el) {
       this.elements = $(el).find(selector).css('position', 'absolute');
-      this.cols = options.cols || 5;
+      this.cols = options.cols || COLS;
       this.rows = Math.ceil(this.elements.length / this.cols);
 
       var sample = this.elements.slice(0, 1);
