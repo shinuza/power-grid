@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Power grid.js - Molecule</title>
+  <style>.pixel { background: red; width: 5px; height: 5px; }</style>
+</head>
+<body>
+<p>
+  <button id="check">Check it up</button>
+</p>
+
+<div id="container" style="position: relative">
+
+</div>
+
+<script src="../jquery-1.10.1.js"></script>
+<script src="../../power-grid.js"></script>
+<script>
+
+  function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+  }
+
+  var el = $('<div class="pixel">').get(0);
+
+  for(var j = 0; j < 25 * 25; j += 1) {
+    container.appendChild(el.cloneNode());
+  }
+  var grid = $('#container').powerGrid({gutter:10, cols: 25});
+  grid.draw();
+
+  $('#check').click(function() {
+    grid.els = shuffle(grid.getElements());
+    grid.draw();
+  });
+
+</script>
+</body>
+</html>
