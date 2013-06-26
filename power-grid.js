@@ -1,5 +1,7 @@
 ;(function(window, $) {
 
+  "use strict";
+
   var COLS = 5;
   var GUTTER = 20;
   var SELECTOR = '> div';
