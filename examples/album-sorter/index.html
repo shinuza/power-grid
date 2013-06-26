@@ -45,7 +45,6 @@
   <script src="../../power-grid.js"></script>
   <script>
     var grid = $('#container').powerGrid({ cols: 5, gutter: 10, selector: '.box' });
-    grid.draw();
 
     $('.sorter').click(function() {
       var criterion = $(this).data('criterion');
@@ -58,7 +57,6 @@
         if(aCrit == bCrit) return 0;
         if(aCrit < bCrit) return -1;
       });
-      grid.draw();
     });
   </script>
   </body>

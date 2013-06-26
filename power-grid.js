@@ -5,11 +5,14 @@
   var COLS = 5;
   var GUTTER = 20;
   var SELECTOR = '> div';
+  var AUTO = true;
 
   $.fn.powerGrid = function powerGrid(options) {
     options = options || {};
     var selector = options.selector || SELECTOR;
+    var auto = (options.auto === undefined) ? AUTO : options.auto;
     if(options.gutter === undefined) options.gutter = GUTTER;
+
 
     function PowerGrid(el) {
       var $el = $(el).css('position', 'relative');
@@ -21,6 +24,10 @@
       var sample = this.elements.slice(0, 1);
       this.sampleHeight = sample.outerHeight();
       this.sampleWidth = sample.outerWidth();
+
+      if(auto === true) {
+        this.draw();
+      }
     }
 
     PowerGrid.prototype = {
@@ -65,11 +72,21 @@
         var o = this.elements;
         for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 
+        if(auto === true) {
+          this.draw();
+        }
+
         return this;
       },
 
       'sort': function sort(fn) {
         Array.prototype.sort.call(this.elements, fn);
+
+        if(auto === true) {
+          this.draw();
+        }
+
+        return this;
       }
     };
 

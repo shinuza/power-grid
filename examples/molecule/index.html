@@ -23,7 +23,7 @@
     container.appendChild(el.cloneNode());
   }
 
-  var grid = $('#container').powerGrid({gutter:5, cols: side});
+  var grid = $('#container').powerGrid({gutter:5, cols: side, auto: false});
   grid.draw();
 
   $('#shake').click(function() {
