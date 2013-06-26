@@ -4,11 +4,15 @@
     options = options || {};
     selector = options.selector || ' > div';
 
+    if(options.gutter === undefined) {
+      options.gutter = 20;
+    }
+
     var els = $(this).find(selector).css('position', 'absolute')
       , cols = options.cols || 5
       , rows = Math.ceil(els.length / cols);
 
-    var gutter = options.gutter || 20
+    var gutter = options.gutter
       , sample = els.slice(0, 1)
       , sampleHeight = sample.outerHeight()
       , sampleWidth = sample.outerWidth();
