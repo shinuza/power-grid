@@ -3,60 +3,68 @@
   $.fn.powerGrid = function powerGrid(options, selector) {
     options = options || {};
     selector = options.selector || ' > div';
+    if(options.gutter === undefined) options.gutter = 20;
 
-    if(options.gutter === undefined) {
-      options.gutter = 20;
+    function PowerGrid(el) {
+      this.elements = $(el).find(selector).css('position', 'absolute');
+      this.cols = options.cols || 5;
+      this.rows = Math.ceil(this.elements.length / this.cols);
+
+      var sample = this.elements.slice(0, 1);
+      this.sampleHeight = sample.outerHeight();
+      this.sampleWidth = sample.outerWidth();
     }
 
-    var els = $(this).find(selector).css('position', 'absolute')
-      , cols = options.cols || 5
-      , rows = Math.ceil(els.length / cols);
+    PowerGrid.prototype = {
+      'position': function position() {
+        var that = this
+          , gutter = options.gutter;
 
-    var gutter = options.gutter
-      , sample = els.slice(0, 1)
-      , sampleHeight = sample.outerHeight()
-      , sampleWidth = sample.outerWidth();
+          this.elements.each(function() {
+            var $this = $(this)
+              , row = $this.data('row')
+              , col = $this.data('col');
 
-    function position() {
-      els.each(function() {
-        var $this = $(this)
-          , row = $this.data('row')
-          , col = $this.data('col');
-
-        $this
-          .animate({
-            'top': sampleHeight * col + col * gutter,
-            'left': sampleWidth * row + row * gutter
-          })
-      });
-    }
-
-    function grid() {
-      var c = 0;
-      for(var i = 0; i < rows; i++ ) {
-        for(var j = 0; j < cols; j ++) {
-          var el = els[c];
-          if(!el) break;
-          $(el)
-            .data('row', j)
-            .data('col', i);
-          c++;
-        }
-      }
-    }
-
-    function draw() {
-      grid();
-      position();
-    }
-
-    return {
-      els: els,
-      getElements: function getElements() {
-        return els;
+            $this
+              [options.animate === false ? 'css' : 'animate']({
+              'top': that.sampleHeight * col + col * gutter,
+              'left': that.sampleWidth * row + row * gutter
+            })
+          });
       },
-      draw: draw
-    }
+
+      'grid': function grid() {
+        var c = 0;
+        for(var i = 0; i < this.rows; i++ ) {
+          for(var j = 0; j < this.cols; j ++) {
+            var el = this.elements[c];
+            if(!el) break;
+            $(el)
+              .data('row', j)
+              .data('col', i);
+            c++;
+          }
+        }
+      },
+
+      'draw': function draw() {
+        this.grid();
+        this.position();
+      },
+
+      'shuffle': function shuffle() {
+        var o = this.elements;
+        for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+
+        return this;
+      },
+
+      'sort': function sort(fn) {
+        Array.prototype.sort.call(this.elements, fn);
+      }
+    };
+
+    return new PowerGrid(this);
   };
 
 }(this, jQuery));

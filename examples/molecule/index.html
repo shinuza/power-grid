@@ -17,21 +17,17 @@
 <script src="../../power-grid.js"></script>
 <script>
 
-  function shuffle(o){ //v1.0
-    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-  }
-
+  var side = 15;
   var el = $('<div class="pixel">').get(0);
-
-  for(var j = 0; j < 25 * 25; j += 1) {
+  for(var j = 0; j < side * side; j += 1) {
     container.appendChild(el.cloneNode());
   }
-  var grid = $('#container').powerGrid({gutter:10, cols: 25});
+
+  var grid = $('#container').powerGrid({gutter:5, cols: side});
   grid.draw();
 
   $('#check').click(function() {
-    grid.els = shuffle(grid.getElements());
+    grid.shuffle();
     grid.draw();
   });
 
