@@ -45,4 +45,6 @@ grid.draw();
 
   You must call `PowerGrid#draw()` to re-draw if `auto` is `false`.
 
+#License
 
+MIT
