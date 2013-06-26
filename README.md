@@ -27,7 +27,7 @@ var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: t
   Renders the grid, you must call this manually to render the grid if `auto` is `false`.
 
 ```js
-var grid = $('#grid').powerGrid{cols: 10, gutter: 20 });
+var grid = $('#grid').powerGrid{ auto: false });
 grid.draw();
 ```
 
