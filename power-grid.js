@@ -10,7 +10,9 @@
     if(options.gutter === undefined) options.gutter = GUTTER;
 
     function PowerGrid(el) {
-      this.elements = $(el).find(selector).css('position', 'absolute');
+      var $el = $(el).css('position', 'relative');
+
+      this.elements = $el.find(selector).css('position', 'absolute');
       this.cols = options.cols || COLS;
       this.rows = Math.ceil(this.elements.length / this.cols);
 
