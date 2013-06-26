@@ -34,14 +34,14 @@
 
       'grid': function grid() {
         var c = 0;
-        for(var i = 0; i < this.rows; i++ ) {
-          for(var j = 0; j < this.cols; j ++) {
+        for(var i = 0; i < this.rows; ++i) {
+          for(var j = 0; j < this.cols; ++j) {
             var el = this.elements[c];
             if(!el) break;
             $(el)
               .data('row', j)
               .data('col', i);
-            c++;
+            ++c;
           }
         }
       },
