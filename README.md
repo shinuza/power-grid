@@ -6,7 +6,7 @@ Power grid disposes elements on a virtual grid and provides function so manage t
 ##API
 
 ```js
-var grid = $('#grid').powerGrid{cols: 10, gutter: 20 });
+var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10 });
 ```
 
 ### PowerGrid(options)
@@ -15,7 +15,7 @@ var grid = $('#grid').powerGrid{cols: 10, gutter: 20 });
 
   Valid options:
 
-   - `selector` (String)  (defaults to `'> div'`)
+   - `selector` (String) Which elements to place on the grid - relative to the target element (defaults to `'> div'`)
    - `cols` (Number) number of columns on which to dispose the elements (defaults to `5`)
    - `gutter` (Number) space between each elements of the grid (defaults to `10`)
 
