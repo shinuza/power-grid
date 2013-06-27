@@ -14,16 +14,22 @@
     if(options.gutter === undefined) options.gutter = GUTTER;
 
 
-    function PowerGrid(el) {
-      var $el = $(el).css('position', 'relative');
-
+    function PowerGrid($el) {
+      $el = $($el);
       this.elements = $el.find(selector).css('position', 'absolute');
+      var len =  this.elements.length;
+
       this.cols = options.cols || COLS;
-      this.rows = Math.ceil(this.elements.length / this.cols);
+      this.rows = Math.ceil(len / this.cols);
 
       var sample = this.elements.slice(0, 1);
       this.sampleHeight = sample.outerHeight();
       this.sampleWidth = sample.outerWidth();
+
+      $el.css({
+        'position': 'relative',
+        'height': this.rows * this.sampleHeight + this.rows * options.gutter
+      });
 
       if(auto === true) {
         this.draw();
