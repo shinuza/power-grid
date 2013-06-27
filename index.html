@@ -6,47 +6,78 @@
     <link rel="stylesheet" href="styles.css"/>
   </head>
   <body>
-    <h1>PowerGrid.js</h1>
 
-    <p></p>
 
-    <h2>Example</h2>
+  <article>
+    <section>
+      <h1>PowerGrid.js</h1>
+      <p>PoweGrid.js disposes elements on a virtual grid and provides function so manage them</p>
+    </section>
 
-    <p>
-      <input id="by_artist" name="sort" type="radio" class="sorter" data-criterion="artist" checked="checked">
-      <label for="by_artist">Sort by Artist</label>
-      <input id="by_album" name="sort" type="radio" class="sorter" data-criterion="album">
-      <label for="by_album">Sort by Album name</label>
-      <input id="by_year" name="sort" type="radio" class="sorter" data-criterion="date">
-      <label for="by_year">Sort by Release year</label>
-    </p>
+    <section>
+      <h2>Usage</h2>
+      <code>
+        <pre>var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: true });</pre>
+      </code>
+    </section>
 
-    <div id="container">
-      <div class="box" data-artist="chemical brothers" data-album="we are the night" data-date="2007">
-        <img src="img/chemical_brothers-we_are_the_night.png"  alt=""/>>
+    <section>
+      <h2>Example</h2>
+
+      <p>
+        <input id="by_artist" name="sort" type="radio" class="sorter" data-criterion="artist" checked="checked">
+        <label for="by_artist">Sort by Artist</label>
+        <input id="by_album" name="sort" type="radio" class="sorter" data-criterion="album">
+        <label for="by_album">Sort by Album name</label>
+        <input id="by_year" name="sort" type="radio" class="sorter" data-criterion="date">
+        <label for="by_year">Sort by Release year</label>
+      </p>
+
+      <div id="container">
+        <div class="box" data-artist="ben harper" data-album="both sides of the gun" data-date="2006">
+          <img src="img/ben_harper-both_sides.jpg"  alt=""/>
+        </div>
+        <div class="box" data-artist="chemical brothers" data-album="we are he night" data-date="2007">
+          <img src="img/chemical_brothers-we_are_the_night.png"  alt=""/>
+        </div>
+        <div class="box" data-artist="keziah jones" data-album="black orpheus" data-date="2003">
+          <img src="img/keziah_jones-black_orpheus.png" alt=""/>
+        </div>
+        <div class="box" data-artist="morcheeba" data-album="dive deep" data-date="2008">
+          <img src="img/morcheeba-dive_deep.jpg" alt=""/>
+        </div>
+        <div class="box" data-artist="morcheeba" data-album="the antidote" data-date="2005">
+          <img src="img/morcheeba-the_antidote.jpg" alt=""/>
+        </div>
+        <div class="box" data-artist="portishead" data-album="dummy" data-date="1994">
+          <img src="img/portishead-dummy.jpg" alt=""/>
+        </div>
+        <div class="box" data-artist="radiohead" data-album="in rainbows" data-date="2007">
+          <img src="img/radiohead-in_rainbows.jpg" alt=""/>
+        </div>
+        <div class="box" data-artist="rage against the machine" data-album="the battle of los angeles" data-date="1999">
+          <img src="img/rage_against_the_machine-the_battle_of_los_angeles.jpg" alt=""/>
+        </div>
+        <div class="box" data-artist="talib kweli and dj hi-tek" data-album="reflection eternal" data-date="2000">
+          <img src="img/talib_kweli-reflection_eternal.jpg" alt=""/>
+        </div>
       </div>
-      <div class="box" data-artist="keziah jones" data-album="black orpheus" data-date="2003">
-        <img src="img/keziah_jones-black_orpheus.png" alt=""/>
-      </div>
-      <div class="box" data-artist="morcheeba" data-album="dive deep" data-date="2008">
-        <img src="img/morcheeba-dive_deep.jpg" alt=""/>
-      </div>
-      <div class="box" data-artist="morcheeba" data-album="the antidote" data-date="2005">
-        <img src="img/morcheeba-the_antidote.jpg" alt=""/>
-      </div>
-      <div class="box" data-artist="portishead" data-album="dummy" data-date="1994">
-        <img src="img/portishead-dummy.jpg" alt=""/>
-      </div>
-      <div class="box" data-artist="radiohead" data-album="in rainbows" data-date="2007">
-        <img src="img/radiohead-in_rainbows.jpg" alt=""/>
-      </div>
-      <div class="box" data-artist="rage against the machine" data-album="the battle of los angeles" data-date="1999">
-        <img src="img/rage_against_the_machine-the_battle_of_los_angeles.jpg" alt=""/>
-      </div>
-      <div class="box" data-artist="talib kweli and dj hi-tek" data-album="reflection eternal" data-date="2000">
-        <img src="img/talib_kweli-reflection_eternal.jpg" alt=""/>
-      </div>
-    </div>
+    </section>
+
+    <section>
+      <h2>API</h2>
+      <p>
+        <a href="https://github.com/shinuza/power-grid#api">Api Documentation</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>License</h2>
+      <p>
+        <a href="http://opensource.org/licenses/MIT">MIT</a>
+      </p>
+    </section>
+  </article>
 
     <script src="jquery-1.10.1.js"></script>
     <script src="power-grid.js"></script>
