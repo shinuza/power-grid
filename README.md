@@ -1,7 +1,7 @@
 PowerGrid.js
 ============
 
-PoweGrid.js disposes elements on a virtual grid and provides function so manage them
+PowerGrid.js disposes elements on a virtual grid and provides function so manage them
 
 ## Usage
 
