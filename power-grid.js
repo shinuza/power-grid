@@ -9,7 +9,7 @@
     options = options || {};
 
     var selector = options.selector || SELECTOR
-      , auto = !!options.auto || true
+      , auto = !!(options.auto === undefined)
       , gutter = options.gutter || GUTTER
       , resize = options.resize || true;
 
@@ -90,11 +90,10 @@
         }, 200);
       },
 
-      'draw': function draw(auto) {
-        if(auto) {
-          this.grid();
-          this.position();
-        }
+      draw: function draw(auto) {
+        if(auto === false) return;
+        this._grid();
+        this._position();
       },
 
       shuffle: function shuffle() {
