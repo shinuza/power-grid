@@ -2,7 +2,6 @@
 
   "use strict";
 
-  var COLS = 5;
   var GUTTER = 20;
   var SELECTOR = '> div';
   var AUTO = true;
@@ -18,13 +17,12 @@
       $el = $($el);
       this.elements = $el.find(selector).css('position', 'absolute');
       var len =  this.elements.length;
-
-      this.cols = options.cols || COLS;
-      this.rows = Math.ceil(len / this.cols);
-
       var sample = this.elements.slice(0, 1);
+
       this.sampleHeight = sample.outerHeight();
       this.sampleWidth = sample.outerWidth();
+      this.cols = options.cols || this.computeCols();
+      this.rows = Math.ceil(len / this.cols);
 
       $el.css({
         'position': 'relative',
@@ -37,6 +35,10 @@
     }
 
     PowerGrid.prototype = {
+
+      'computeCols': function computeCols() {
+        return Math.floor($(window).outerWidth() / this.sampleWidth);
+      },
 
       'grid': function grid() {
         var c = 0;
