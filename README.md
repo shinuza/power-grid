@@ -18,7 +18,7 @@ var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: t
   Valid options:
 
    - `selector` (String) Selects elements to place on the grid - relative to the target element (defaults to `'> div'`)
-   - `cols` (Number) Number of columns on which to dispose the elements (defaults to `5`)
+   - `cols` (Number) Number of columns on which to dispose the elements (defaults to fullscreen width)
    - `gutter` (Number) Space between each elements of the grid (defaults to `10`)
    - `auto` (Boolean) Defines if you need to call `PowerGrid#draw()` manually (default to `true`)
 
