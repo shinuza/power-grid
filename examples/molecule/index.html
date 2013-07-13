@@ -23,12 +23,10 @@
     container.appendChild(el.cloneNode());
   }
 
-  var grid = $('#container').powerGrid({gutter:5, cols: side, auto: false});
-  grid.draw();
+  var grid = $('#container').powerGrid({gutter:5, cols: side});
 
   $('#shake').click(function() {
     grid.shuffle();
-    grid.draw();
   });
 
 </script>
