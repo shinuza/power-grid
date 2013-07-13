@@ -32,9 +32,7 @@
         'height': this.rows * this.sampleHeight + this.rows * gutter
       });
 
-      if(auto === true) {
-        this.draw();
-      }
+      this.draw(auto);
 
       if(resize === true && !options.cols) {
         $(window).resize(function() {
@@ -88,22 +86,22 @@
         clearTimeout(this.timer);
         this.timer = setTimeout(function() {
           self.cols = self.computeCols();
-          self.draw();
+          self.draw(true);
         }, 200);
       },
 
-      'draw': function draw() {
-        this.grid();
-        this.position();
+      'draw': function draw(auto) {
+        if(auto) {
+          this.grid();
+          this.position();
+        }
       },
 
       'shuffle': function shuffle() {
         var o = this.elements, j, x, i = o.length;
         for(; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 
-        if(auto === true) {
-          this.draw();
-        }
+        this.draw(auto);
 
         return this;
       },
@@ -111,9 +109,7 @@
       'sort': function sort(fn) {
         Array.prototype.sort.call(this.elements, fn);
 
-        if(auto === true) {
-          this.draw();
-        }
+        this.draw(auto);
 
         return this;
       }
