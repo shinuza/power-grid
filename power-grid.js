@@ -10,12 +10,15 @@
 
     var selector = options.selector || SELECTOR
       , auto = !!options.auto || true
-      , gutter = options.gutter || GUTTER;
+      , gutter = options.gutter || GUTTER
+      , resize = options.resize || true;
 
 
     function PowerGrid($el) {
       $el = $($el);
+
       this.elements = $el.find(selector).css('position', 'absolute');
+      var self = this;
       var len =  this.elements.length;
       var sample = this.elements.slice(0, 1);
 
@@ -32,9 +35,17 @@
       if(auto === true) {
         this.draw();
       }
+
+      if(resize === true && !options.cols) {
+        $(window).resize(function() {
+          self.delayedResize();
+        });
+      }
     }
 
     PowerGrid.prototype = {
+
+      timer: null,
 
       'computeCols': function computeCols() {
         return Math.floor($(window).outerWidth() / this.sampleWidth);
@@ -68,6 +79,16 @@
               'left': that.sampleWidth * row + row * gutter
             })
           });
+      },
+
+      'delayedResize': function delayedResize() {
+        var self = this;
+
+        clearTimeout(this.timer);
+        this.timer = setTimeout(function() {
+          self.cols = self.computeCols();
+          self.draw();
+        }, 200);
       },
 
       'draw': function draw() {

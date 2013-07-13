@@ -6,7 +6,7 @@ PowerGrid.js disposes elements on a virtual grid and provides function so manage
 ## Usage
 
 ```js
-var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: true });
+var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: true, resize: false });
 ```
 
 ## API
@@ -21,6 +21,7 @@ var grid = $('#grid').powerGrid{ selector: '> div', cols: 5, gutter: 10, auto: t
    - `cols` (Number) Number of columns on which to dispose the elements (defaults to fullscreen width)
    - `gutter` (Number) Space between each elements of the grid (defaults to `10`)
    - `auto` (Boolean) Defines if you need to call `PowerGrid#draw()` manually (default to `true`)
+   - `resize` (Boolean) Defines if resizing the window re-distribute the elements across the grid, deactivated if `cols` is defined (default to `true`)
 
 ### PowerGrid#draw()
 
