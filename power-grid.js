@@ -2,8 +2,8 @@
 
   "use strict";
 
-  var GUTTER = 20;
-  var SELECTOR = '> div';
+  var GUTTER = 20
+    , SELECTOR = '> div';
 
   $.fn.powerGrid = function powerGrid(options) {
     options = options || {};
@@ -16,11 +16,11 @@
 
     function PowerGrid($el) {
       $el = $($el);
-
       this.elements = $el.find(selector).css('position', 'absolute');
-      var self = this;
-      var len =  this.elements.length;
-      var sample = this.elements.slice(0, 1);
+
+      var self = this
+        , len =  this.elements.length
+        , sample = this.elements.slice(0, 1);
 
       this.sampleHeight = sample.outerHeight();
       this.sampleWidth = sample.outerWidth();
@@ -52,10 +52,11 @@
       },
 
       'grid': function grid() {
-        var c = 0;
-        for(var i = 0; i < this.rows; ++i) {
-          for(var j = 0; j < this.cols; ++j) {
-            var el = this.elements[c];
+        var c = 0 , i = 0 , j , el;
+
+        for(; i < this.rows; ++i) {
+          for(j = 0; j < this.cols; ++j) {
+            el = this.elements[c];
             if(!el) break;
             $(el)
               .data('row', j)
@@ -97,8 +98,8 @@
       },
 
       'shuffle': function shuffle() {
-        var o = this.elements;
-        for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        var o = this.elements, j, x, i = o.length;
+        for(; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 
         if(auto === true) {
           this.draw();
