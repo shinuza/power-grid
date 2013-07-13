@@ -4,13 +4,13 @@
 
   var GUTTER = 20;
   var SELECTOR = '> div';
-  var AUTO = true;
 
   $.fn.powerGrid = function powerGrid(options) {
     options = options || {};
-    var selector = options.selector || SELECTOR;
-    var auto = (options.auto === undefined) ? AUTO : options.auto;
-    if(options.gutter === undefined) options.gutter = GUTTER;
+
+    var selector = options.selector || SELECTOR
+      , auto = !!options.auto || true
+      , gutter = options.gutter || GUTTER;
 
 
     function PowerGrid($el) {
@@ -26,7 +26,7 @@
 
       $el.css({
         'position': 'relative',
-        'height': this.rows * this.sampleHeight + this.rows * options.gutter
+        'height': this.rows * this.sampleHeight + this.rows * gutter
       });
 
       if(auto === true) {
@@ -55,8 +55,7 @@
       },
 
       'position': function position() {
-        var that = this
-          , gutter = options.gutter;
+        var that = this;
 
           this.elements.each(function() {
             var $this = $(this)
