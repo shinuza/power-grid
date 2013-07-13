@@ -24,19 +24,19 @@
 
       this.sampleHeight = sample.outerHeight();
       this.sampleWidth = sample.outerWidth();
-      this.cols = options.cols || this.computeCols();
+      this.cols = options.cols || this._computeCols();
       this.rows = Math.ceil(len / this.cols);
 
       $el.css({
-        'position': 'relative',
-        'height': this.rows * this.sampleHeight + this.rows * gutter
+        position: 'relative',
+        height: this.rows * this.sampleHeight + this.rows * gutter
       });
 
       this.draw(auto);
 
       if(resize === true && !options.cols) {
         $(window).resize(function() {
-          self.delayedResize();
+          self._delayedResize();
         });
       }
     }
@@ -45,11 +45,11 @@
 
       timer: null,
 
-      'computeCols': function computeCols() {
+      _computeCols: function _computeCols() {
         return Math.floor($(window).outerWidth() / this.sampleWidth);
       },
 
-      'grid': function grid() {
+      _grid: function _grid() {
         var c = 0 , i = 0 , j , el;
 
         for(; i < this.rows; ++i) {
@@ -64,7 +64,7 @@
         }
       },
 
-      'position': function position() {
+      _position: function _position() {
         var that = this;
 
           this.elements.each(function() {
@@ -74,18 +74,18 @@
 
             $this
               [options.animate === false ? 'css' : 'animate']({
-              'top': that.sampleHeight * col + col * gutter,
-              'left': that.sampleWidth * row + row * gutter
+              top: that.sampleHeight * col + col * gutter,
+              left: that.sampleWidth * row + row * gutter
             })
           });
       },
 
-      'delayedResize': function delayedResize() {
+      _delayedResize: function _delayedResize() {
         var self = this;
 
         clearTimeout(this.timer);
         this.timer = setTimeout(function() {
-          self.cols = self.computeCols();
+          self.cols = self._computeCols();
           self.draw(true);
         }, 200);
       },
@@ -97,7 +97,7 @@
         }
       },
 
-      'shuffle': function shuffle() {
+      shuffle: function shuffle() {
         var o = this.elements, j, x, i = o.length;
         for(; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 
@@ -106,7 +106,7 @@
         return this;
       },
 
-      'sort': function sort(fn) {
+      sort: function sort(fn) {
         Array.prototype.sort.call(this.elements, fn);
 
         this.draw(auto);
