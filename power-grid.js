@@ -16,7 +16,11 @@
 
     function PowerGrid($el) {
       $el = $($el);
-      this.elements = $el.find(selector).css('position', 'absolute');
+      this.elements = $el.find(selector)
+        .css({
+          position: 'absolute',
+          transition: 'all 0.2s ease-out'
+        });
 
       var self = this
         , len =  this.elements.length
@@ -73,7 +77,7 @@
               , col = $this.data('col');
 
             $this
-              [options.animate === false ? 'css' : 'animate']({
+              [false && options.animate === false ? 'css' : 'animate']({
               top: that.sampleHeight * col + col * gutter,
               left: that.sampleWidth * row + row * gutter
             })
